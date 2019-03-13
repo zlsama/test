@@ -1,0 +1,17 @@
+import zipfile
+import os
+import cv2
+import numpy as np
+# 默认模式r,读
+faces = zipfile.ZipFile('faces.zip') 
+faces.extractall('face_data')
+faces.close()
+
+face_data = [] 
+path = 'f/faces'
+for file in os.listdir(path):
+    file = os.path.join(path,file)
+    im = cv2.imread(file)
+    face_data.append(im)
+face_data = np.asarray(face_data)
+face_data.shape
